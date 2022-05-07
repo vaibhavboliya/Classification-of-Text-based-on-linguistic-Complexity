@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Text Complexity Finder</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="static/fonts/fontawesome5-overrides.min.css" />
+  </head>
+
+  <body style="color: #3d81b3">
+    <div id="wrapper">
+      <nav
+        class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-success p-0"
+      >
+        <div class="container-fluid d-flex flex-column p-0">
+          <a
+            class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
+            href="#"
+          >
+            <!-- <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div> -->
+            <div class="sidebar-brand-text mx-3">
+              <!-- <img src="static/img/logo.png" width="150px" height="50px" /> -->
+              <!-- <title color="while">Text Complexity</title> -->
+            </div>
+          </a>
+          <hr class="sidebar-divider my-0" />
+          <ul class="navbar-nav text-light" id="accordionSidebar">
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('index') }}"
+                ><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a
+              >
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('form') }}"
+                ><i style="font-size: 24px" class="fas">&#x1F5CE;</i
+                ><span>Text Complexity finder</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('profile') }}"
+                ><i class="fas fa-user"></i><span>About Us</span></a
+              >
+            </li>
+            <!-- <li class="nav-item"><a class="nav-link" href="{{ url_for('pfizer') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Pfizer Vaccine</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('moderna') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Moderna Vaccine</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('janssen') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Janssen Vaccine</span></a></li> -->
+            <!-- <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Table</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li> -->
+          </ul>
+          <div class="text-center d-none d-md-inline">
+            <button
+              class="btn rounded-circle border-0"
+              id="sidebarToggle"
+              type="button"
+            ></button>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <!-- <div class="col-lg-5 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;static/img/dogs/image2.jpeg&quot;);"></div>
+                    </div> -->
+              <div class="col-lg-12">
+                <div class="p-5">
+                  <!-- <div class="text-center">
+                    <h4 class="text-dark mb-4">Report An ADR</h4>
+                  </div> -->
+                  <center>
+                    <div class="sidebar-brand-text mx-3">
+                      <h3>Text Complexity Finder</h3>
+                    </div>
+                  </center>
+                  <form class="user" action="/submit" method="POST">
+                    <div class="row mb-3">
+                      <!-- <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="First Name" name="first_name"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="Last Name" name="last_name"></div> -->
+                      <h3 class="lead">
+                        <strong><em>Text Information:</em></strong>
+                      </h3>
+                    </div>
+                    <div class="col-sm-12 mb-3">
+                      <div class="input-group">
+                        <span class="input-group-text">Text:</span>
+                        <textarea
+                          class="form-control"
+                          name="Symptoms"
+                          aria-label="Symptoms"
+                          id="speechToText"
+                          required
+                        ></textarea>
+                        <button class="btn btn-warning" type="button" name="button" class="mic" onclick="record()">
+                          <i class="fas fa-microphone"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <script>
+                      //webkitSpeechRecognition api for speech to text conversion
+                      function record() {
+                        var recognition = new webkitSpeechRecognition();
+                        recognition.lang = "en-IN";
+                    
+                        recognition.onresult = function (event) {
+                          console.log(event);
+                          document.getElementById("speechToText").value =
+                            event.results[0][0].transcript;
+                        };
+                        recognition.start();
+                      }
+                      </script>
+
+
+
+                    <!-- <div class="row mb-3">
+                      <div class="col-sm-2">Age :</div>
+                      <div class="col-sm-4">
+                        <input
+                          class="form-control form-control-user"
+                          type="number"
+                          required
+                          min="1"
+                          placeholder="Age at the time of Event "
+                          name="age"
+                        />
+                      </div> -->
+
+
+                      <!-- <div class="col-sm-1"></div> -->
+                      <!-- <div class="col-sm-2 form-check">Gender:</div>
+                      <div class="col-sm-3">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="gender"
+                          value="male"
+                          required
+                        />
+                        Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="gender"
+                          value="female"
+                        />
+                        Female &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="gender"
+                          value="other"
+                        />
+                        Other
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-sm-2">Date Of Vaccination:</div>
+                      <div class="col-sm-4">
+                        <input
+                          class="form-control form-control-user"
+                          type="date"
+                          required
+                          placeholder="Date Of Birth Of Patient"
+                          name="dov"
+                        />
+                      </div> -->
+
+
+
+                      <!-- <div class="col-sm-1"></div> -->
+                      <!-- <div class="col-sm-2">Date Of Recovery:</div>
+                      <div class="col-sm-4">
+                        <input
+                          class="form-control form-control-user"
+                          type="date"
+                          placeholder="Date Of Birth Of Patient"
+                          name="dor"
+                        />
+                      </div> -->
+                      <!-- <div class="col-sm-1"></div> -->
+                    <!-- </div>
+                    <div class="col-sm-12 mb-3">
+                      <div class="input-group">
+                        <span class="input-group-text">Symptoms:</span>
+                        <textarea
+                          class="form-control"
+                          name="Symptoms"
+                          aria-label="Symptoms"
+                          required
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-sm-6 mb-3">
+                        <div class="input-group">
+                          <span class="input-group-text"
+                            >Relevant Medical History</span
+                          >
+                          <textarea
+                            class="form-control"
+                            name="medical_history"
+                            aria-label="medical_history"
+                          ></textarea>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6 mb-3">
+                        <div class="input-group">
+                          <span class="input-group-text">Current Illness</span>
+                          <textarea
+                            class="form-control"
+                            name="curr_ill"
+                            aria-label="curr_ill"
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-sm-6 mb-3">
+                        <div class="input-group">
+                          <span class="input-group-text"
+                            >Other medications</span
+                          >
+                          <textarea
+                            class="form-control"
+                            name="oth_med"
+                            aria-label="oth_med"
+                          ></textarea>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-2 form-check">Died:</div>
+                      <div class="col-sm-4">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="died"
+                          value="yes"
+                          required
+                        />
+                        Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="died"
+                          value="no"
+                        />
+                        No
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-sm-2 form-check">Is Hospitalized:</div>
+                      <div class="col-sm-4">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="hospitalized"
+                          value="yes"
+                          required
+                        />
+                        Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="hospitalized"
+                          value="no"
+                        />
+                        No
+                      </div>
+
+                      <div class="col-sm-2 form-check">
+                        Emergency Room (ER/ED) Visits:
+                      </div>
+                      <div class="col-sm-4">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="ER"
+                          value="yes"
+                          required
+                        />
+                        Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="ER"
+                          value="no"
+                        />
+                        No
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-sm-1 form-check">Vaccine Type:</div>
+                      <div class="col-sm-5">
+                        <input
+                          class="form-control form-control-user"
+                          type="text"
+                          required
+                          placeholder="eg:  Covid-19"
+                          name="vaccine_type"
+                        />
+                      </div>
+
+                      <div class="col-sm-1 form-check">Vaccine Name:</div>
+                      <div class="col-sm-5">
+                        <input
+                          class="form-control form-control-user"
+                          type="text"
+                          required
+                          placeholder="eg:  COVID19 (COVID19 (PFIZER-BIONTECH))"
+                          name="vaccine_name"
+                        />
+                      </div>
+                    </div> -->
+                    <!-- <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Repeat Password" name="password_repeat"></div>
+                                </div> -->
+                    <center>
+                      <button
+                        class="btn btn-primary d-block btn-user w-50"
+                        type="submit"
+                      >
+                        Submit
+                      </button>
+                    </center>
+
+                    <!-- <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Register with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Register with Facebook</a>
+                                <hr> -->
+                  </form>
+                  <!-- <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
+                            <div class="text-center"><a class="small" href="login.html">Already have an account? Login!</a></div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/script.min.js"></script>
+  </body>
+</html>

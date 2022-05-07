@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Detection OF ADR</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/fonts/fontawesome5-overrides.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <script>
+                        var label = '{{ label | tojson }}';
+                        var label_percentage = '{{ label_percentage | tojson }}';
+                        label = label.substring(1,label.length-1);
+                        label = label.replace(/\"/g, '');
+                        label = label.split(",");
+                        label_percentage = label_percentage.substring(1,label_percentage.length-1);
+                        label_percentage = label_percentage.replace(/\"/g, '');
+                        label_percentage = label_percentage.split(",");
+                        var data3 = [];
+                        for (let i = 0; i < label_percentage.length; i++) {
+                            var v1 = label[i];
+                            var v2 = parseInt(label_percentage[i]);
+                            data3.push(
+                                {
+                                    label:v1,
+                                    y: v2
+                                }
+                            );
+                            
+                        }
+            window.onload = function() {
+                var chart3 = new CanvasJS.Chart("chartContainer3", {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                data: [{
+                    type: "pie",
+                    startAngle: 25,
+                    toolTipContent: "<b>{label}</b>: {y}%",
+                    showInLegend: "true",
+                    legendText: "{label}",
+                    indexLabelFontSize: 16,
+                    indexLabel: "{label} - {y}%",
+                    dataPoints: data3
+                }]
+            });
+            chart3.render();
+            }
+            </script>
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <!-- <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div> -->
+                    <div class="sidebar-brand-text mx-3"><img src="static/img/logo.png" width="150px" height="50px"></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('form') }}"><i style='font-size:24px' class='fas'>&#x1F5CE;</i><span>ADR-form</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i><span>About Us</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('pfizer') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Pfizer Vaccine</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('moderna') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Moderna Vaccine</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('janssen') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Janssen Vaccine</span></a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Table</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li> -->
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <center>
+                            <img src="static/img/moderna.png">
+                        </center>
+                    </div>
+                    <div class="row" style="padding: 20px;">
+                        <table class="table table-striped">
+                            <thead>
+                              <tr class="table-primary">
+                                <th scope="col">General Information about the vaccine</th>
+                                <th scope="col">
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Manufacturer</td>
+                                <td>ModernaTX, Inc.</td>
+                              </tr>
+                              <tr>
+                                <td>Number of Shots</td>
+                                <td>2 shots, 28 days apart
+                                    Moderately or severely immunocompromised people should get an additional primary shot (third dose) at least 28 days after their second shot.</td>
+                              </tr>
+                              <tr>
+                                <td>Type of Vaccine:</td>
+                                <td>mRNA</td>
+                              </tr>
+                              <tr>
+                                <td>How Given</td>
+                                <td>Shot in the muscle of the upper arm</td>
+                              </tr>
+                              <tr>
+                                <td>Booster Shot</td>
+                                <td>People ages 18 years and older who received a Moderna primary series should get a booster shot at least 5 months after completing their primary series. CDC recommends getting a booster dose of either Pfizer-BioNTech or Moderna (mRNA COVID-19 vaccines) in most situations.</td>
+                              </tr>
+                              <tr>
+                                <td>Who Should Get Vaccinated</td>
+                                <td>The Moderna vaccine is recommended for people ages 18 years and older..</td>
+                              </tr>
+                              <tr>
+                                <td>Who Should NOT Get Vaccinated</td>
+                                <td>
+                                    If you have had a severe allergic reaction to any ingredient in an mRNA COVID-19 vaccine (such as polyethylene glycol), you should not get an mRNA COVID-19 vaccine (Moderna or Pfizer-BioNTech).
+If you had a severe allergic reaction after getting the first dose of an mRNA COVID-19 vaccine, you should not get a second dose of either of the mRNA COVID-19 vaccines (Moderna or Pfizer-BioNTech).
+A severe allergic reaction can cause a rapid heartbeat, difficulty breathing, swelling of the throat, or a generalized rash or hives. A person with a severe allergic reaction needs to be treated with epinephrine (often given as an EpiPen®) and should seek immediate medical attention.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="row">
+                        <div class="card shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary fw-bold m-0">Distribution based on severity</h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright ©  2022</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="static/js/script.min.js"></script>
+</body>
+
+</html>

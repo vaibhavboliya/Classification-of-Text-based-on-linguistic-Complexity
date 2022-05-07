@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Detection OF ADR</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/fonts/fontawesome5-overrides.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <script>
+                        var label = '{{ label | tojson }}';
+                        var label_percentage = '{{ label_percentage | tojson }}';
+                        label = label.substring(1,label.length-1);
+                        label = label.replace(/\"/g, '');
+                        label = label.split(",");
+                        label_percentage = label_percentage.substring(1,label_percentage.length-1);
+                        label_percentage = label_percentage.replace(/\"/g, '');
+                        label_percentage = label_percentage.split(",");
+                        var data3 = [];
+                        for (let i = 0; i < label_percentage.length; i++) {
+                            var v1 = label[i];
+                            var v2 = parseInt(label_percentage[i]);
+                            data3.push(
+                                {
+                                    label:v1,
+                                    y: v2
+                                }
+                            );
+                            
+                        }
+            window.onload = function() {
+                var chart3 = new CanvasJS.Chart("chartContainer3", {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                data: [{
+                    type: "pie",
+                    startAngle: 25,
+                    toolTipContent: "<b>{label}</b>: {y}%",
+                    showInLegend: "true",
+                    legendText: "{label}",
+                    indexLabelFontSize: 16,
+                    indexLabel: "{label} - {y}%",
+                    dataPoints: data3
+                }]
+            });
+            chart3.render();
+            }
+            </script>
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <!-- <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div> -->
+                    <div class="sidebar-brand-text mx-3"><img src="static/img/logo.png" width="150px" height="50px"></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('form') }}"><i style='font-size:24px' class='fas'>&#x1F5CE;</i><span>ADR-form</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i><span>About Us</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('pfizer') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Pfizer Vaccine</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('moderna') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Moderna Vaccine</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('janssen') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Janssen Vaccine</span></a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Table</span></a></li>
+                    
+                        <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li> -->
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <center>
+                                <img src="static/img/janssen.jpg">  
+                        </center>
+                    </div>
+                    <div class="row" style="padding: 20px;">
+                        <table class="table table-striped">
+                            <thead>
+                              <tr class="table-primary">
+                                <th scope="col">General Information about the vaccine</th>
+                                <th scope="col">
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Manufacturer</td>
+                                <td>Janssen Pharmaceuticals Companies of Johnson & Johnson</td>
+                              </tr>
+                              <tr>
+                                <td>Number of Shots</td>
+                                <td>1 shot may be given in some situations.</td>
+                              </tr>
+                              <tr>
+                                <td>Type of Vaccine:</td>
+                                <td>Viral Vector</td>
+                              </tr>
+                              <tr>
+                                <td>How Given</td>
+                                <td>Shot in the muscle of the upper arm</td>
+                              </tr>
+                              <tr>
+                                <td>Booster Shot</td>
+                                <td>Everyone ages 18 years and older should get a booster dose of either Pfizer-BioNTech or Moderna (mRNA COVID-19 vaccines) at least 2 months after receiving the Johnson & Johnson’s Janssen (J&J/Janssen) vaccine in most situations.
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Who Should Get Vaccinated</td>
+                                <td>In most situations, Pfizer-BioNTech or Moderna COVID-19 vaccines are preferred over the J&J/Janssen COVID-19 vaccine for primary and booster vaccination due to the risk of serious adverse events. Vaccine recipients must be informed of the risks and benefits of J&J/Janssen COVID-19 vaccination. The J&J/Janssen COVID-19 vaccine may be considered in some situations, including for persons who:
+
+                                    Had a severe reaction after an mRNA vaccine dose or who have a severe allergy to an ingredient of Pfizer-BioNTech or Moderna (mRNA COVID-19 vaccines).
+                                    Would otherwise remain unvaccinated for COVID-19 due to limited access to Pfizer-BioNTech or Moderna (mRNA COVID-19 vaccines).
+                                    Wants to get the J&J/Janssen COVID-19 vaccine despite the safety concerns.</td>
+                              </tr>
+                              <tr>
+                                <td>Who Should NOT Get Vaccinated</td>
+                                <td>
+                                    If you have had a severe allergic reaction (anaphylaxis) or an immediate allergic reaction, even if it was not severe, to any ingredientexternal icon in the J&J/Janssen COVID-19 vaccine (such as polysorbate), you should not get the J&J/Janssen COVID-19 vaccine.
+
+                                    A severe allergic reaction is one that needs to be treated with epinephrine or EpiPen or requiring additional medical care. Learn about common side effects of COVID-19 vaccines and when to call a doctor.
+                                    An immediate allergic reaction means a reaction within 4 hours of exposure, including symptoms such as hives, swelling, or wheezing (respiratory distress).
+                                    If you developed thrombosis with thrombocytopenia syndrome after your initial J&J/Janssen vaccine, you should get the Pfizer-BioNTech or Moderna (mRNA COVID-19 vaccines) for your booster dose.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="row">
+                        <div class="card shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary fw-bold m-0">Distribution based on severity</h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright ©  2022</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="static/js/script.min.js"></script>
+</body>
+
+</html>

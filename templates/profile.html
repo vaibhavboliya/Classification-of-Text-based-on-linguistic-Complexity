@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/fonts/fontawesome5-overrides.min.css">
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Exo+2|Yatra+One');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Exo 2', sans-serif;
+}
+
+body{
+  background: white;
+}
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #4e73df;
+  color: white;
+  margin-left:20px;
+  width:auto;
+}
+.wrapper{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.wrapper h1{
+  font-family: 'Yatra One', cursive;
+  font-size: 48px;
+  color: black;
+  margin-bottom: 25px;
+}
+
+.our_team{
+  width: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.column {
+  float: left;
+  width:auto;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+.our_team .team_member{
+  width: 250px;
+  margin: 4px;
+  background: white;
+  padding: 20px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height:420px;
+}
+
+.our_team .team_member .member_img{
+  background: #e9e5fa;  
+  max-width: 190px;
+  width: 100%;
+  height: 190px;
+  margin: 0 auto;
+  border-radius: 50%;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.our_team .team_member .member_img img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.our_team .team_member h3{
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 2px;
+  margin: 15px 0 0px;
+}
+
+.our_team .team_member span{
+  font-size: 10px;
+}
+
+.our_team .team_member p{
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.our_team .team_member .member_img .social_media{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: rgba(0,0,0,0.65);
+  width: 95%;
+  height: 95%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0);
+   transition: all 0.5s ease;
+}
+
+.our_team .team_member .member_img .social_media .item{
+  margin: 0 10px;
+}
+
+.our_team .team_member .member_img .social_media .fab{
+  color: #8c7ae6;
+  font-size: 20px;
+}
+
+.our_team .team_member .member_img:hover .social_media{
+  transform: scale(1);
+}
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-success p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <!-- <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div> -->
+                    <!-- <div class="sidebar-brand-text mx-3"><img src="static/img/logo.png" width="150px" height="50px"></div> -->
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <!-- <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}"><i class="fas fa-tachometer-alt"></i><span>  Dashboard</span></a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('form') }}"><i style='font-size:24px' class='fas'>&#x1F5CE;</i><span> Text Complexity Finder</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('profile') }}"><i class="fas fa-user"></i><span>    About Us</span></a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="{{ url_for('pfizer') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Pfizer Vaccine</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('moderna') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Moderna Vaccine</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('janssen') }}"><i style='font-size:24px' class='fas'>&#128137;</i><span>Janssen Vaccine</span></a></li> -->
+                    <!--<li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Table</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li> 
+                    <!-- <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li> -->
+                </ul>
+                
+            </div>
+        </nav>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <div class="container py-5 h-100 w-50">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem">
+            <div class="card-body p-5 text-center">
+              <h2>VERSION 1.0.0</h2>
+              <hr />
+              <h5>
+                We are just a bunch of Enthusiastic people,who wants to help The
+                Society.
+              </h5>
+              <hr />
+              <h2>Our Creator Team:</h2>
+              <hr style="color: #010101" />
+              <ul class="">
+                <li>Vaibhav Boliya</li>
+                <li>Nikhil Gangaramani</li>
+                <li>Shreyas Kotkar</li>
+              </ul>
+              <hr />
+              <p class="td">Thank you, For visiting our website</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+            
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>
